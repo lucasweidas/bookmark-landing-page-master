@@ -1,0 +1,77 @@
+@use '../abstracts/' as *;
+
+.button {
+  width: 100%;
+  height: rem(48);
+  display: grid;
+  place-items: center;
+  padding-inline: rem(12);
+  font-size: var(--font-size-button);
+  font-weight: 500;
+  text-align: center;
+  border: rem(2) solid transparent;
+  border-radius: rem(6);
+  box-shadow: 0 rem(4) rem(10) rem(-4) var(--button-shadow-color);
+
+  &--blue {
+    --button-shadow-color: hsl(231, 69%, 60%, 0.6);
+    background-color: var(--color-soft-blue);
+    color: var(--color-white);
+
+    &:not(.button-more) {
+      @include button-hover-focus() {
+        color: var(--color-soft-blue);
+      }
+    }
+  }
+
+  &--gray {
+    --button-shadow-color: hsl(229, 8%, 60%, 0.6);
+    background-color: var(--color-grayish-white);
+    color: var(--color-dark-blue);
+
+    @include button-hover-focus;
+  }
+
+  &--red {
+    background-color: var(--color-soft-red);
+    color: var(--color-white);
+
+    @include button-hover-focus {
+      color: var(--color-soft-red);
+    }
+  }
+
+  &-login {
+    font-weight: 400;
+    text-transform: uppercase;
+
+    @include breakpoint-down(medium) {
+      width: 100%;
+      margin-block-start: var(--item-padding-block);
+      font-size: rem(20);
+      color: var(--color-white);
+      border-color: var(--color-white);
+    }
+
+    @include breakpoint(medium) {
+      width: rem(110);
+      background-color: var(--color-soft-red);
+      font-size: rem(16);
+      color: var(--color-white);
+
+      @include button-hover-focus {
+        color: var(--color-soft-red);
+      }
+    }
+
+    @include breakpoint(large) {
+      height: rem(40);
+      font-size: rem(13);
+    }
+  }
+
+  &-more {
+    width: rem(114);
+  }
+}

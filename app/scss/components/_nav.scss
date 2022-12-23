@@ -1,0 +1,70 @@
+@use '../abstracts/' as *;
+
+.nav {
+  --nav-guide-z: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.active .logo--header {
+    z-index: calc(var(--nav-guide-z) + 1);
+
+    svg > g {
+      & > path {
+        fill: #ffffff;
+        transition: fill 300ms ease-in-out;
+      }
+
+      & > g > circle {
+        fill: #ffffff;
+        transition: fill 300ms ease-in-out;
+      }
+
+      & > g > path {
+        fill: #242a45;
+        transition: fill 300ms ease-in-out;
+      }
+    }
+  }
+}
+
+.guide-toggle {
+  width: rem(22);
+  height: rem(19);
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-color: transparent;
+
+  .nav.active & {
+    z-index: calc(var(--nav-guide-z) + 1);
+  }
+
+  &::before,
+  &::after {
+    height: rem(15);
+    transition: opacity 300ms ease-in-out;
+  }
+
+  &::before {
+    content: url('../images/icon-hamburger.svg');
+
+    .nav.active & {
+      opacity: 0;
+    }
+  }
+
+  &::after {
+    content: url('../images/icon-close.svg');
+    position: absolute;
+    opacity: 0;
+
+    .nav.active & {
+      opacity: 1;
+    }
+  }
+
+  @include breakpoint(medium) {
+    display: none;
+  }
+}

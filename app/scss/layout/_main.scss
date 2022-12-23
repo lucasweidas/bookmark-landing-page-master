@@ -1,0 +1,13 @@
+@use '../abstracts/' as *;
+
+.main {
+  overflow: hidden;
+
+  &__container {
+    padding-block-start: rem(72);
+
+    @include breakpoint(large) {
+      padding-block-start: rem(104);
+    }
+  }
+}

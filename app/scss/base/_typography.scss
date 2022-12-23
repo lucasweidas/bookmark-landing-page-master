@@ -1,0 +1,80 @@
+@use '../abstracts/' as *;
+
+:root {
+  --font-rubik: 'Rubik', sans-serif;
+  --font-size-h1: #{rem(30)};
+  --font-size-h2: #{rem(24)};
+  --font-size-h3: #{rem(20)};
+  --font-size-1: #{rem(15)};
+  --font-size-2: #{rem(15)};
+  --font-size-button: #{rem(14)};
+
+  @include breakpoint(medium) {
+    --font-size-h1: #{rem(36)};
+    --font-size-h2: #{rem(30)};
+    --font-size-2: #{rem(18)};
+  }
+
+  @include breakpoint(large) {
+    --font-size-h1: #{rem(48)};
+  }
+}
+
+body {
+  font-family: var(--font-rubik);
+}
+
+.headline-1,
+.headline-2,
+.headline-3 {
+  font-weight: 500;
+  color: var(--color-dark-blue);
+  text-align: center;
+}
+
+.headline-1 {
+  font-size: var(--font-size-h1);
+  margin-block-end: rem(20);
+  line-height: 1.1;
+}
+
+.headline-2 {
+  font-size: var(--font-size-h2);
+  margin-block-end: rem(16);
+  line-height: 1.2;
+}
+
+.headline-3 {
+  font-size: var(--font-size-h3);
+  margin-block-end: rem(10);
+}
+
+.text {
+  padding-block-end: rem(32);
+  font-size: var(--font-size-2);
+  font-weight: 400;
+  color: var(--color-grayish-blue);
+  text-align: center;
+  line-height: 1.6;
+
+  &--upper {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  &--white {
+    color: var(--color-white);
+  }
+
+  &--sm {
+    font-size: var(--font-size-1);
+  }
+}
+
+.text-error {
+  display: none;
+  padding: rem(8) rem(12);
+  font-size: rem(12);
+  font-style: italic;
+  color: var(--color-white);
+}

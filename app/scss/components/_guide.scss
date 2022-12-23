@@ -1,0 +1,138 @@
+@use '../abstracts/' as *;
+
+.guide {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: rem(40);
+
+  @include breakpoint(medium) {
+    width: auto;
+  }
+
+  &--header {
+    @include breakpoint-down(medium) {
+      min-height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      z-index: var(--nav-guide-z);
+      padding: rem(104) rem(32) rem(48);
+      background-color: hsl(229, 31%, 21%, 0.95);
+
+      &.slide-in {
+        animation: slide-in-guide 300ms ease-in-out forwards;
+        visibility: visible;
+
+        @keyframes slide-in-guide {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+      }
+
+      &.slide-out {
+        animation: slide-out-guide 300ms ease-in-out forwards;
+        visibility: visible;
+
+        @keyframes slide-out-guide {
+          100% {
+            transform: translateX(100%);
+          }
+        }
+      }
+    }
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+
+      .socials {
+        display: none;
+      }
+    }
+  }
+
+  &--footer {
+    @include breakpoint(large) {
+      flex: 1;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include breakpoint(medium) {
+      width: auto;
+      column-gap: min(3.5vw, rem(48));
+    }
+
+    @include breakpoint(large) {
+      column-gap: rem(48);
+    }
+
+    .guide--header & {
+      @include breakpoint-down(medium) {
+        .list__item {
+          --item-padding-block: #{rem(22)};
+          width: 100%;
+          border-block-start: rem(1) solid var(--color-grayish-blue);
+          text-align: center;
+        }
+
+        .list__link {
+          display: block;
+          padding-block: var(--item-padding-block);
+          font-size: rem(20);
+          font-weight: 400;
+          color: var(--color-white);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+        }
+      }
+
+      @include breakpoint(medium) {
+        flex-direction: row;
+
+        .list__link {
+          color: var(--color-dark-blue);
+        }
+      }
+
+      @include breakpoint(large) {
+        font-size: rem(14);
+      }
+    }
+
+    .guide--footer & {
+      row-gap: rem(24);
+
+      @include breakpoint(large) {
+        flex-direction: row;
+      }
+
+      .text {
+        padding-block-end: 0;
+      }
+    }
+
+    .list__link {
+      transition: color 150ms ease;
+
+      @include on-hover-focus {
+        color: var(--color-soft-red);
+      }
+    }
+  }
+}

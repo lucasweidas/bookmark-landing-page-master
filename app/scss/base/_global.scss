@@ -1,0 +1,17 @@
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+button {
+  background-color: transparent;
+}
+
+.hidden {
+  display: none !important;
+}

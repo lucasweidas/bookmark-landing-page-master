@@ -1,0 +1,73 @@
+@use '../abstracts/' as *;
+
+.intro {
+  width: min(100% - rem(32) * 2, rem(1110));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  row-gap: rem(48);
+
+  @include breakpoint(large) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  &__image {
+    position: relative;
+    width: min(100% + rem(24) * 2, rem(540));
+
+    @include breakpoint(large) {
+      width: auto;
+      margin-inline-end: calc(rem(48) * -2);
+    }
+
+    &::before {
+      --image-bg-height: #{min(53vw, rem(290))};
+      --image-bg-radius: calc(var(--image-bg-height) / 2);
+      content: '';
+      width: 100vw;
+      height: var(--image-bg-height);
+      position: absolute;
+      bottom: rem(0);
+      left: clamp(rem(64), 10vw, rem(88));
+      z-index: -1;
+      background-color: var(--color-soft-blue);
+      border-top-left-radius: var(--image-bg-radius);
+      border-bottom-left-radius: var(--image-bg-radius);
+
+      @include breakpoint(large) {
+        --image-bg-height: #{min(53vw, rem(350))};
+        bottom: rem(-24);
+        left: clamp(rem(140), 14vw, rem(184));
+      }
+    }
+  }
+
+  &__content {
+    width: min(100%, rem(540));
+
+    @include breakpoint(large) {
+      width: min(100%, rem(480));
+
+      .headline-1,
+      .text {
+        text-align: start;
+      }
+
+      .button {
+        width: auto;
+        padding-inline: rem(24);
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: clamp(rem(14), 3.5vw, rem(24));
+
+    @include breakpoint-down(small) {
+      flex-wrap: wrap;
+    }
+  }
+}

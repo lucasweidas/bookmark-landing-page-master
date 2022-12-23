@@ -1,0 +1,71 @@
+@use '../abstracts/' as *;
+
+.download {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-start: rem(152);
+  padding-inline: rem(32);
+
+  @include breakpoint(large) {
+    margin-block-start: rem(168);
+  }
+
+  &__content {
+    width: min(100%, rem(540));
+  }
+
+  &__cards {
+    --columns-size: #{minmax(auto, rem(280))};
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    row-gap: rem(40);
+    grid-template-columns: var(--columns-size);
+
+    @include breakpoint(medium) {
+      min-height: rem(440);
+      grid-template-columns: repeat(3, var(--columns-size));
+      column-gap: min(3%, rem(36));
+    }
+
+    .card {
+      border-radius: rem(16);
+      box-shadow: 0 rem(6) rem(12) rem(-4) hsl(231, 69%, 60%, 0.25);
+
+      @include breakpoint(medium) {
+        &:nth-child(1) {
+          align-self: flex-start;
+        }
+
+        &:nth-child(2) {
+          align-self: center;
+        }
+
+        &:nth-child(3) {
+          align-self: flex-end;
+        }
+      }
+
+      &__image {
+        margin-block-end: rem(32);
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-inline: rem(24);
+
+        &:first-of-type {
+          padding-block-start: rem(48);
+        }
+
+        &:last-of-type {
+          padding-block: rem(24);
+          background: url('../images/bg-dots.svg') top center no-repeat;
+        }
+      }
+    }
+  }
+}

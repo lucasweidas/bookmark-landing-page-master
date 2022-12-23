@@ -1,0 +1,13 @@
+@use '../abstracts/' as *;
+
+.header {
+  &__container {
+    width: min(100% - rem(32) * 2, rem(1110));
+    margin-inline: auto;
+    padding-block-start: rem(40);
+
+    @include breakpoint(large) {
+      padding-block-start: rem(48);
+    }
+  }
+}

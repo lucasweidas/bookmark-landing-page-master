@@ -1,0 +1,33 @@
+@use 'breakpoints' as *;
+
+@mixin breakpoint($size) {
+  @media screen and (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media screen and (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+@mixin on-hover-focus {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover,
+    &:focus-visible {
+      @content;
+    }
+  }
+}
+
+@mixin button-hover-focus {
+  transition-property: background-color, color, border-color;
+  transition: 200ms ease;
+
+  @include on-hover-focus {
+    background-color: var(--color-white);
+    border-color: currentColor;
+    @content;
+  }
+}

@@ -1,0 +1,17 @@
+@use '../abstracts/' as *;
+
+.socials {
+  display: flex;
+  align-items: center;
+  column-gap: rem(38);
+
+  &__link {
+    flex-shrink: 0;
+    color: var(--color-white);
+    transition: color 150ms ease;
+
+    @include on-hover-focus {
+      color: var(--color-soft-red);
+    }
+  }
+}
