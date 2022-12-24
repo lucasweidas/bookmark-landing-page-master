@@ -1,12 +1,29 @@
 @use '../abstracts/' as *;
 
 .guide {
-  display: flex;
   width: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  row-gap: rem(40);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: rem(40);
+
+    @include breakpoint-down(medium) {
+      height: 100%;
+      overflow: scroll;
+      padding-block-end: rem(48);
+    }
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+
+      .socials {
+        display: none;
+      }
+    }
+  }
 
   @include breakpoint(medium) {
     width: auto;
@@ -14,14 +31,15 @@
 
   &--header {
     @include breakpoint-down(medium) {
-      min-height: 100vh;
+      height: 100vh;
       position: fixed;
       top: 0;
       left: 0;
       visibility: hidden;
       z-index: var(--nav-guide-z);
-      padding: rem(104) rem(32) rem(48);
+      padding: rem(104) rem(32) 0;
       background-color: hsl(229, 31%, 21%, 0.95);
+      overflow: hidden;
 
       &.slide-in {
         animation: slide-in-guide 300ms ease-in-out forwards;
@@ -48,17 +66,15 @@
         }
       }
     }
-
-    @include breakpoint(medium) {
-      flex-direction: row;
-
-      .socials {
-        display: none;
-      }
-    }
   }
 
   &--footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: rem(40);
+
     @include breakpoint(large) {
       flex: 1;
       flex-direction: row;
